@@ -61,3 +61,25 @@
 - `docker exec -it redis redis-cli`进入redis控制台，`ctrl p + ctrl q`或`exit`退出交互界面
 - 设置自启动redis：`docker update redis --restart=always`
 
+### Windows10上vagrant root免密码登录
+在root用户下
+> vim /etc/ssh/sshd_config
+打开两个关于秘钥的配置
+RSAAuthentication yes
+PubkeyAuthentication yes
+> 
+> 配置公钥
+vim ~/.ssh/authorized_keys
+将自己的公钥添加到这里。
+重启服务
+service sshd restart
+exit
+退出虚拟机
+
+修改vagrant配置数据，注释密码，加上私钥地址
+> config.ssh.username = "root"
+> #config.ssh.password = "vagrant"
+> config.ssh.private_key_path = "/Users/XXX/.ssh/id_rsa"
+
+### Windows10 ssh-agent启动失败
+<div style="text-align: center"><img src="IMG/ssh-agent.png" /></div>
