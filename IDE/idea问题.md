@@ -5,3 +5,6 @@
 
 ### 主项目pom.xml添加子项目名后，子项目没有添加
 需要在右侧maven选项中刷新
+
+### SpringBootTest中Test方法会执行两次
+<div style="text-align: center"><img src="IMG/idea_maven_test.png" /></div><br/>
