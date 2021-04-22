@@ -83,3 +83,6 @@ exit
 
 ### Windows10 ssh-agent启动失败
 <div style="text-align: center"><img src="IMG/ssh-agent.png" /></div>
+
+### Windows10 选择模式复制有个坑
+选择后复制，首字母不会添加！！！
