@@ -34,7 +34,7 @@ nvm安装使用
 - `npm config delete proxy`
 - `npm config delete https-proxy`
 
-### 使用nrm快速切换npm源
+### 使用nrm快速切换npm源（注意：使用时要把terminal的代理unset）
 安装
 - `sudo npm install -g nrm`
 
