@@ -17,6 +17,8 @@ nvm安装使用
 > `nvm ls`
 > 切换 node 版本
 > `nvm use <版本号>` 再用`nvm current` 或 `node -v`确认
+> 设定默认的 node 版本
+> `nvm alias default <版本号>`
 > 删除指定版本 node
 > `nvm uninstall <版本号>`
 
