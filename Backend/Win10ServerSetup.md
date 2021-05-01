@@ -86,3 +86,13 @@ exit
 
 ### Windows10 选择模式复制有个坑
 选择后复制，首字母不会添加！！！
+
+### Vagrant设置共享文件夹
+1. 先把虚拟机的linux升级，具体有yum和kernel
+`yum update`
+`yum install kernel-devel`
+2. 再退出linux，安装vagrant-vbguest插件
+`vagrant plugin install vagrant-vbguest`
+3. 配置vagrantfile,增加两行配置
+`config.vm.synced_folder ".", "/vagrant", disable: true`
+`config.vm.synced_folder "F:\\VagrantShare", "/vagrant_data", owner: "root", group: "root"`
