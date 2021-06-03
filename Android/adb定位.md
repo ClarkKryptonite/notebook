@@ -6,4 +6,5 @@
 `adb shell dumpsys activity activities | grep mResumedActivity`
 3. 查看栈顶activity的fragment
 `adb shell dumpsys activity your.package.name`
-搜出结果后可以用'Added Fragments'进行检索
+搜出结果后可以用'Added Fragments'或'Active Fragments'进行检索
+   - 比如说：`adb shell dumpsys activity com.qizhidao.clientapp`  
