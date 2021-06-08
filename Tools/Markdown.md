@@ -122,7 +122,6 @@ Note right of C: 没人陪我玩
 
 ### 甘特图样例
 ```mermaid
-%% 语法示例
         gantt
         dateFormat  YYYY-MM-DD
         title 软件开发甘特图
