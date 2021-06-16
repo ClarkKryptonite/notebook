@@ -1,6 +1,6 @@
 # Markdown不常用的语法
 
-### 任务清单
+## 任务清单
 ```
 - [x] 支持 @提到某人、#引用、[链接]()、**格式化** 和 <del>标签</del> 等语法
 - [x] 需要使用列表语法来激活（无序或有序列表均可）
@@ -13,12 +13,12 @@
 - [x] 这是一个已完成项目
 - [ ] 这是一个未完成项目
 
-### HTML元素
+## HTML元素
 `使用 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd> 重启电脑`
 效果
 使用 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd> 重启电脑
 
-### 公式
+## 公式
 当你需要在编辑器中插入数学公式时，可以使用两个美元符 $$ 包裹 TeX 或 LaTeX 格式的数学公式来实现。提交后，问答和文章页会根据需要加载 Mathjax 对数学公式进行渲染。
 ```latex
 $$ 
@@ -34,7 +34,8 @@ $$
 
 $$ \int_0^1 {x^2} \,{\rm d}x $$
 
-### 横向流程图
+## 横向流程图
+mermaid语法: [https://cloud.tencent.com/developer/article/1334691](https://cloud.tencent.com/developer/article/1334691)
 ```mermaid
 graph LR
     A[方形] -->B(圆角)
@@ -44,7 +45,7 @@ graph LR
     F[横向流程图]
 ```
 
-### 竖向流程图
+## 竖向流程图
 ```mermaid
 graph TD
     A[方形] --> B(圆角)
@@ -54,7 +55,8 @@ graph TD
     F[竖向流程图]
 ```
 
-### 标准流程图
+## 标准流程图
+flow语法：[https://www.jianshu.com/p/f28c94cf1204](https://www.jianshu.com/p/f28c94cf1204)
 ```flow
 st=>start: 开始框
 op=>operation: 处理框
@@ -67,7 +69,7 @@ cond(yes)->io->e
 cond(no)->sub1(right)->op
 ```
 
-### 横向标准流程图
+## 横向标准流程图
 ```flow
 st=>start: 开始框
 op=>operation: 处理框
@@ -80,7 +82,7 @@ cond(yes)->io(bottom)->e
 cond(no)->sub1(right)->op
 ```
 
-### UML时序图
+## UML时序图
 ```sequence
 对象A->对象B: 对象B你好吗?（请求）
 Note right of 对象B: 对象B的描述
@@ -89,7 +91,7 @@ Note left of 对象A: 对象A的描述(提示)
 对象A->对象B: 你真的好吗？
 ```
 
-### UML时序图源码复杂样例
+## UML时序图源码复杂样例
 ```sequence
 Title: 标题：复杂使用
 对象A->对象B: 对象B你好吗?（请求）
@@ -104,7 +106,7 @@ participant C
 Note right of C: 没人陪我玩
 ```
 
-### UML标准时序图样例
+## UML标准时序图样例
 ```mermaid
 %% 时序图例子,-> 直线，-->虚线，->>实线箭头
   sequenceDiagram
@@ -120,7 +122,7 @@ Note right of C: 没人陪我玩
     李四-->王五: 很好!
 ```
 
-### 甘特图样例
+## 甘特图样例
 ```mermaid
 gantt
     dateFormat  YYYY-MM-DD
