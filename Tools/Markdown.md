@@ -5,12 +5,9 @@
   - [HTML元素](#html元素)
   - [公式](#公式)
   - [Mermaid图](#mermaid图)
-    - [横向流程图](#横向流程图)
-    - [竖向流程图](#竖向流程图)
+    - [流图](#流图)
     - [标准流程图](#标准流程图)
-    - [横向标准流程图](#横向标准流程图)
     - [UML时序图](#uml时序图)
-    - [UML时序图源码复杂样例](#uml时序图源码复杂样例)
     - [UML标准时序图样例](#uml标准时序图样例)
     - [甘特图样例](#甘特图样例)
     - [类图](#类图)
@@ -56,7 +53,7 @@ $$ \int_0^1 {x^2} \,{\rm d}x $$
 
 ## Mermaid图
 官网示例：[https://mermaid-js.github.io/mermaid/#/](https://mermaid-js.github.io/mermaid/#/)
-### 横向流程图
+### 流图
 mermaid语法: [https://cloud.tencent.com/developer/article/1334691](https://cloud.tencent.com/developer/article/1334691)
 ```mermaid
 graph LR
@@ -65,16 +62,6 @@ graph LR
     C -->|a=1| D[结果1]
     C -->|a=2| E[结果2]
     F[横向流程图]
-```
-
-### 竖向流程图
-```mermaid
-graph TD
-    A[方形] --> B(圆角)
-    B --> C{条件a}
-    C --> |a=1| D[结果1]
-    C --> |a=2| E[结果2]
-    F[竖向流程图]
 ```
 
 ### 标准流程图
@@ -92,30 +79,7 @@ cond(yes)->io->e
 cond(no)->sub1(right)->op
 ```
 
-### 横向标准流程图
-```flow
-st=>start: 开始框
-op=>operation: 处理框
-cond=>condition: 判断框(是或否?)
-sub1=>subroutine: 子流程
-io=>inputoutput: 输入输出框
-e=>end: 结束框
-
-st(right)->op->cond
-cond(yes)->io(bottom)->e
-cond(no)->sub1(top)->op
-```
-
 ### UML时序图
-```sequence
-对象A->对象B: 对象B你好吗?（请求）
-Note right of 对象B: 对象B的描述
-Note left of 对象A: 对象A的描述(提示)
-对象B-->对象A: 我很好(响应)
-对象A->对象B: 你真的好吗？
-```
-
-### UML时序图源码复杂样例
 ```sequence
 Title: 标题：复杂使用
 对象A->对象B: 对象B你好吗?（请求）
