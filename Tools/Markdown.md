@@ -1,5 +1,25 @@
 # Markdown不常用的语法
 
+- [Markdown不常用的语法](#markdown不常用的语法)
+  - [任务清单](#任务清单)
+  - [HTML元素](#html元素)
+  - [公式](#公式)
+  - [Mermaid图](#mermaid图)
+    - [横向流程图](#横向流程图)
+    - [竖向流程图](#竖向流程图)
+    - [标准流程图](#标准流程图)
+    - [横向标准流程图](#横向标准流程图)
+    - [UML时序图](#uml时序图)
+    - [UML时序图源码复杂样例](#uml时序图源码复杂样例)
+    - [UML标准时序图样例](#uml标准时序图样例)
+    - [甘特图样例](#甘特图样例)
+    - [类图](#类图)
+    - [状态迁移图](#状态迁移图)
+    - [饼图](#饼图)
+    - [Git log图（虽然官网有示例，但是有问题，也没有对应文档）](#git-log图虽然官网有示例但是有问题也没有对应文档)
+    - [整体关系图](#整体关系图)
+    - [行程图](#行程图)
+
 ## 任务清单
 ```
 - [x] 支持 @提到某人、#引用、[链接]()、**格式化** 和 <del>标签</del> 等语法
@@ -34,7 +54,9 @@ $$
 
 $$ \int_0^1 {x^2} \,{\rm d}x $$
 
-## 横向流程图
+## Mermaid图
+官网示例：[https://mermaid-js.github.io/mermaid/#/](https://mermaid-js.github.io/mermaid/#/)
+### 横向流程图
 mermaid语法: [https://cloud.tencent.com/developer/article/1334691](https://cloud.tencent.com/developer/article/1334691)
 ```mermaid
 graph LR
@@ -45,7 +67,7 @@ graph LR
     F[横向流程图]
 ```
 
-## 竖向流程图
+### 竖向流程图
 ```mermaid
 graph TD
     A[方形] --> B(圆角)
@@ -55,7 +77,7 @@ graph TD
     F[竖向流程图]
 ```
 
-## 标准流程图
+### 标准流程图
 flow语法：[https://www.jianshu.com/p/f28c94cf1204](https://www.jianshu.com/p/f28c94cf1204)
 ```flow
 st=>start: 开始框
@@ -64,12 +86,13 @@ cond=>condition: 判断框(是或否?)
 sub1=>subroutine: 子流程
 io=>inputoutput: 输入输出框
 e=>end: 结束框
+
 st->op->cond
 cond(yes)->io->e
 cond(no)->sub1(right)->op
 ```
 
-## 横向标准流程图
+### 横向标准流程图
 ```flow
 st=>start: 开始框
 op=>operation: 处理框
@@ -77,12 +100,13 @@ cond=>condition: 判断框(是或否?)
 sub1=>subroutine: 子流程
 io=>inputoutput: 输入输出框
 e=>end: 结束框
-st(right)->op(right)->cond
+
+st(right)->op->cond
 cond(yes)->io(bottom)->e
-cond(no)->sub1(right)->op
+cond(no)->sub1(top)->op
 ```
 
-## UML时序图
+### UML时序图
 ```sequence
 对象A->对象B: 对象B你好吗?（请求）
 Note right of 对象B: 对象B的描述
@@ -91,7 +115,7 @@ Note left of 对象A: 对象A的描述(提示)
 对象A->对象B: 你真的好吗？
 ```
 
-## UML时序图源码复杂样例
+### UML时序图源码复杂样例
 ```sequence
 Title: 标题：复杂使用
 对象A->对象B: 对象B你好吗?（请求）
@@ -106,7 +130,7 @@ participant C
 Note right of C: 没人陪我玩
 ```
 
-## UML标准时序图样例
+### UML标准时序图样例
 ```mermaid
 %% 时序图例子,-> 直线，-->虚线，->>实线箭头
   sequenceDiagram
@@ -122,9 +146,10 @@ Note right of C: 没人陪我玩
     李四-->王五: 很好!
 ```
 
-## 甘特图样例
+### 甘特图样例
 ```mermaid
 gantt
+    %% this is a comment
     dateFormat  YYYY-MM-DD
     title 软件开发甘特图
 
@@ -145,4 +170,95 @@ gantt
     功能测试                   :active, a1, after des3, 3d
     压力测试                   :after a1  , 20h
     测试报告                   : 48h
+```
+
+### 类图
+```mermaid
+classDiagram
+    Animal <|-- Duck
+    Animal <|-- Fish
+    Animal <|-- Zebra
+    Animal : +int age
+    Animal : +String gender
+    Animal : +isMammal()
+    Animal : +mate()
+    Duck : +String beakColor
+    Duck : +swim()
+    Duck : +quack()
+    Fish : -int sizeInFeet
+    Fish : -canEat()
+    Zebra : +bool is_wild
+    Zebra : +run()
+```
+
+### 状态迁移图
+```mermaid
+stateDiagram-v2
+    [*] --> Active
+
+    state Active {
+        [*] --> NumLockOff
+        NumLockOff --> NumLockOn : EvNumLockPressed
+        NumLockOn --> NumLockOff : EvNumLockPressed
+        --
+        [*] --> CapsLockOff
+        CapsLockOff --> CapsLockOn : EvCapsLockPressed
+        CapsLockOn --> CapsLockOff : EvCapsLockPressed
+        --
+        [*] --> ScrollLockOff
+        ScrollLockOff --> ScrollLockOn : EvCapsLockPressed
+        ScrollLockOn --> ScrollLockOff : EvCapsLockPressed
+    }
+```
+
+### 饼图
+```mermaid
+pie
+    title 数学成绩饼图
+    "90分以上" : 15
+    "80-90分" : 21
+    "70-80分" : 12
+    "60-70分" : 8
+    "60分以下" : 3
+```
+
+### Git log图（虽然官网有示例，但是有问题，也没有对应文档）
+```mermaid
+gitGraph:
+options
+{
+    "nodeSpacing": 150,
+    "nodeRadius": 10
+}
+end
+commit
+branch newbranch
+checkout newbranch
+commit
+commit
+checkout master
+commit
+commit
+merge newbranch
+```
+
+### 整体关系图
+```mermaid
+erDiagram
+    CUSTOMER ||--o{ ORDER : places
+    ORDER ||--|{ LINE-ITEM : contains
+    CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
+```
+
+### 行程图
+```mermaid
+journey
+    title My working day
+    section Go to work
+      Make tea: 5: Me
+      Go upstairs: 3: Me
+      Do work: 1: Me, Cat
+    section Go home
+      Go downstairs: 5: Me
+      Sit down: 5: Me
 ```
