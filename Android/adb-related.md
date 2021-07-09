@@ -1,5 +1,9 @@
 # adb 相关
 
+- [adb 相关](#adb-相关)
+    - [adb获取栈顶信息](#adb获取栈顶信息)
+    - [adb查看UI性能](#adb查看ui性能)
+
 ### adb获取栈顶信息
 1. 查看当前activity
 `adb shell dumpsys window w | grep name=`
