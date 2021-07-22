@@ -30,3 +30,6 @@
 > 3. Client验证Server的数字证书，并再次生成一个随机数pre-master secret,然后用数字证书中的公钥对该随机数加密发送给Server
 > 4. Server用私钥解密该随机数。
 > 5. Client和Server依据之前三个随机数以及约定好的加密算法生成对话密钥(session key)
+
+## 3. 数字证书原理
+[原理](https://www.cnblogs.com/jeffreysun/archive/2010/06/24/1627247.html)
