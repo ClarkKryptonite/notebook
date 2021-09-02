@@ -1,10 +1,11 @@
 # adb 相关
 
 - [adb 相关](#adb-相关)
-    - [adb获取栈顶信息](#adb获取栈顶信息)
-    - [adb查看UI性能](#adb查看ui性能)
+  - [adb获取栈顶信息](#adb获取栈顶信息)
+  - [adb查看UI性能](#adb查看ui性能)
+  - [adb查询错误报告(包括anr之类)](#adb查询错误报告包括anr之类)
 
-### adb获取栈顶信息
+## adb获取栈顶信息
 1. 查看当前activity
 `adb shell dumpsys window w | grep name=`
 2. 查看栈顶activity
@@ -14,7 +15,7 @@
 搜出结果后可以用'Added Fragments'或'Active Fragments'进行检索
    - 比如说：`adb shell dumpsys activity com.qizhidao.clientapp`  
 
-### adb查看UI性能
+## adb查看UI性能
 1. 在开发者模式中打开GPU调试
 2. 获取数据
    `adb shell dumpsys gfxinfo [package_name]`
@@ -58,7 +59,12 @@
 - Execute： 表示把一帧数据发送到屏幕上排版显示实际花费的时间，其实是实际显示帧数据的后台缓存区与前台缓冲区交换后并将前台缓冲区的内容显示到屏幕上的时间
 - 将上面的四个时间加起来就是绘制一帧所需要的时间，如果超过了16.67就表示掉帧了
 
-> ## 说明
+> **说明:**
 > - Android定义了流畅度的数据标准,以60FPS为标准(FPS为每秒绘制的帧数),帧数过小就会出现卡顿感
 > - 每一帧在安卓系统中分4个阶段,4个阶段的总和超过16.67(1秒60帧,算下来平均1帧的间隔就约是16.67ms)就认为丢帧
 > - 这个定义在Android6.0以前是一定的,但是现在已经没有固定的标准了,因为目前安卓系统有3层缓存机制,加上硬件上的进步,即使超过16.67,也不一定会出现卡顿感。所以这个数据在测试时作为一种对比和相对衡量标准，也可根据需求自定义标准。
+
+## adb查询错误报告(包括anr之类)
+使用 `adb bugreport` 获取错误报告，默认会保存在本地。
+默认情况下，ZIP文件名称为 `bugreport-BUILD_ID-DATE.zip`, 其中最重要的是 `bugreport-BUILD_ID-DATE.txt`。
+使用 `adb shell dumpsys batterystats --reset`重置错误报告。
