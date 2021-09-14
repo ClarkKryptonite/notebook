@@ -4,6 +4,8 @@
   - [adb获取栈顶信息](#adb获取栈顶信息)
   - [adb查看UI性能](#adb查看ui性能)
   - [adb查询错误报告(包括anr之类)](#adb查询错误报告包括anr之类)
+  - [查看安装包的路径](#查看安装包的路径)
+  - [清除安装包数据与缓存](#清除安装包数据与缓存)
 
 ## adb获取栈顶信息
 1. 查看当前activity
@@ -68,3 +70,9 @@
 使用 `adb bugreport` 获取错误报告，默认会保存在本地。
 默认情况下，ZIP文件名称为 `bugreport-BUILD_ID-DATE.zip`, 其中最重要的是 `bugreport-BUILD_ID-DATE.txt`。
 使用 `adb shell dumpsys batterystats --reset`重置错误报告。
+
+## 查看安装包的路径
+`adb shell pm path <PackageName>`
+
+## 清除安装包数据与缓存
+`adb shell pm clear <PackageName>`
