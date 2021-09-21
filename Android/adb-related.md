@@ -6,6 +6,7 @@
   - [adb查询错误报告(包括anr之类)](#adb查询错误报告包括anr之类)
   - [查看安装包的路径](#查看安装包的路径)
   - [清除安装包数据与缓存](#清除安装包数据与缓存)
+  - [adb修改sdcard内容后，对应文件管理器没有立刻更新](#adb修改sdcard内容后对应文件管理器没有立刻更新)
 
 ## adb获取栈顶信息
 1. 查看当前activity
@@ -76,3 +77,6 @@
 
 ## 清除安装包数据与缓存
 `adb shell pm clear <PackageName>`
+
+## adb修改sdcard内容后，对应文件管理器没有立刻更新
+操作完后需要执行如下命令 `adb shell am broadcast -a android.intent.action.MEDIA_SCANNER_SCAN_FILE -d file:///sdcard/Movies`
