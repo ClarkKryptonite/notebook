@@ -3,6 +3,7 @@
 - [android业务相关，遇到的一些坑](#android业务相关遇到的一些坑)
   - [Activity设置透明背景不成功](#activity设置透明背景不成功)
   - [`DialogFragment`中如果有`EditText`，点击后布局会往上顶](#dialogfragment中如果有edittext点击后布局会往上顶)
+  - [`TabLayout`的 `indicator`长度设置](#tablayout的-indicator长度设置)
 
 ## Activity设置透明背景不成功
 1. `AndroidManifest.xml`中的theme不能设置为`@style/Theme.AppCompat.Translucent`，应该为如下设置
@@ -29,3 +30,5 @@
 </style>
 ```
 再在`onCreate`调用`setStyle(STYLE_NORMAL, R.style.Dialog_FullScreen)`就能正常显示了
+
+## `TabLayout`的 `indicator`长度设置
