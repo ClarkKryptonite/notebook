@@ -6,6 +6,7 @@
   - [`TabLayout`的 `indicator`长度设置](#tablayout的-indicator长度设置)
   - [ViewBinding java.lang.NullPointerException](#viewbinding-javalangnullpointerexception)
     - [解决方法](#解决方法)
+  - [编译报错`Call requires API level 24 (current min is 23): java.lang.Iterable#forEach`](#编译报错call-requires-api-level-24-current-min-is-23-javalangiterableforeach)
 
 ## Activity设置透明背景不成功
 1. `AndroidManifest.xml`中的theme不能设置为`@style/Theme.AppCompat.Translucent`，应该为如下设置
@@ -102,3 +103,18 @@ line 1:0 mismatched input '?' expecting {COMMENT, SEA_WS, '<', PI}
 **Android studio , 选中对应模块 ，右键 ，remove BOM 即可**
 原因：
 BOM即byte order mark，具体含义可百度百科或维基百科，UTF-8文件中放置BOM主要是微软的习惯，但是放在别的系统上会出现问题。不含BOM的UTF-8才是标准形式，UTF-8不需要BOM带BOM的UTF-8文件的开头会有U+FEFF，所以我新建的空文件会有3字节的大小。
+
+
+## 编译报错`Call requires API level 24 (current min is 23): java.lang.Iterable#forEach`
+```kotlin
+mandatoryViews.forEach { view ->
+   // my code here
+}
+```
+代码在库中会报`Call requires API level 24 (current min is 23): java.lang.Iterable#forEach`
+
+This issue is fixed in lint supplied with Android Gradle plugin 4.2, with 4.2.1 being the latest stable release right now.
+
+Update your project-level build.gradle to have
+
+`classpath 'com.android.tools.build:gradle:4.2.1'`
