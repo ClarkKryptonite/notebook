@@ -7,6 +7,8 @@
   - [ViewBinding java.lang.NullPointerException](#viewbinding-javalangnullpointerexception)
     - [解决方法](#解决方法)
   - [编译报错`Call requires API level 24 (current min is 23): java.lang.Iterable#forEach`](#编译报错call-requires-api-level-24-current-min-is-23-javalangiterableforeach)
+  - [在SDK<29的时候，突然报错`android:requestLegacyExternalStorage not found`](#在sdk29的时候突然报错androidrequestlegacyexternalstorage-not-found)
+  - [TextView设置滚动](#textview设置滚动)
 
 ## Activity设置透明背景不成功
 1. `AndroidManifest.xml`中的theme不能设置为`@style/Theme.AppCompat.Translucent`，应该为如下设置
@@ -118,3 +120,11 @@ This issue is fixed in lint supplied with Android Gradle plugin 4.2, with 4.2.1 
 Update your project-level build.gradle to have
 
 `classpath 'com.android.tools.build:gradle:4.2.1'`
+
+## 在SDK<29的时候，突然报错`android:requestLegacyExternalStorage not found`
+本质上是其他库升级时，对应库的`AndroidManifest.xml`有添加属性。所以只需要去掉属性就行，即在项目的`AndroidManifest.xml`添加`tools:remove="android:requestLegacyExternalStorage"`属性，其他属性可以看[https://developer.android.com/studio/build/manifest-merge?hl=zh-cn](https://developer.android.com/studio/build/manifest-merge?hl=zh-cn)。
+
+另外如果想看对应那个库添加了该属性，可以从日志`/[app主模块]/build/outputs/logs/manifest-merger-debug-report.txt`搜索关键字查看
+
+## TextView设置滚动
+使用内部自带的`setMovementMethod(ScrollingMovementMethod.getInstance())`方法即可
