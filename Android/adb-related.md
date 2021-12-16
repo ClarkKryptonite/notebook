@@ -7,6 +7,7 @@
   - [查看安装包的路径](#查看安装包的路径)
   - [清除安装包数据与缓存](#清除安装包数据与缓存)
   - [adb修改sdcard内容后，对应文件管理器没有立刻更新](#adb修改sdcard内容后对应文件管理器没有立刻更新)
+  - [读取剪切板内容](#读取剪切板内容)
 
 ## adb获取栈顶信息
 1. 查看当前activity
@@ -80,3 +81,19 @@
 
 ## adb修改sdcard内容后，对应文件管理器没有立刻更新
 操作完后需要执行如下命令 `adb shell am broadcast -a android.intent.action.MEDIA_SCANNER_SCAN_FILE -d file:///sdcard/Movies`
+
+## 读取剪切板内容
+1. 需要安装软件
+[https://github.com/majido/clipper](https://github.com/majido/clipper)
+2. 启动软件，获取对应权限
+3. 设置shell代码,添加到对应的sh配置文件中
+```shell
+adb shell am start ca.zgrs.clipper/.Main
+sleep 0.5
+if [[ -z $1 ]]; then
+    adb shell am broadcast -a clipper.get
+else
+    adb shell am broadcast -a clipper.set -e text "\"$1\""
+fi
+adb shell am force-stop ca.zgrs.clipper
+```
