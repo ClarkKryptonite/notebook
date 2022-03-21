@@ -15,6 +15,8 @@
 4. 把修改后的本地分支与远程分支关联
    `git branch --set-upstream-to origin/newBranch`
 
+## 获取远程服务器的最新改动
+使用`git branch -a`看不到同事推送的分支时，应使用`git fetch --all`获取远程服务器的改动，再调用其他命令。
 ## Tag标签
 ### 查看
 查看本地Tag List
