@@ -55,3 +55,10 @@ From git@github0123:jeremy0123/fetch.git
 删除远程标签
 `git push origin --delete tag [tag name]` or
 `git push origin :refs/origin/[tag name]`
+
+
+## 找到之前删除的文件，并提取出来
+1. 第一步找到文件所对应的删除记录
+`git log --diff-filter=D --summary | grep [filename] | awk '{print $4; exit}' | xargs git log --all --`
+2. 找到对应的记录，然后还原
+`git checkout <SHA>^ -- <full-path-to-file>`
