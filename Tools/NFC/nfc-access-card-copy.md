@@ -5,6 +5,7 @@
 [各个扇区含义](https://www.123455.xyz/2021/05/m1.html)
 
 ## 开源相关
+[MifareClassicTool apk](https://github.com/ikarus23/MifareClassicTool)
 [变色龙](https://github.com/emsec/ChameleonMini)
 [proxmark3](https://github.com/Proxmark/proxmark3)
 [proxmark3 mac software](https://github.com/RfidResearchGroup/homebrew-proxmark3)
