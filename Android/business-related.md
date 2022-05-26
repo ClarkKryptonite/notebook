@@ -9,6 +9,7 @@
   - [编译报错`Call requires API level 24 (current min is 23): java.lang.Iterable#forEach`](#编译报错call-requires-api-level-24-current-min-is-23-javalangiterableforeach)
   - [在SDK<29的时候，突然报错`android:requestLegacyExternalStorage not found`](#在sdk29的时候突然报错androidrequestlegacyexternalstorage-not-found)
   - [TextView设置滚动](#textview设置滚动)
+  - [荣耀手机使用Android Studio Profiler时App闪退](#荣耀手机使用android-studio-profiler时app闪退)
 
 ## Activity设置透明背景不成功
 1. `AndroidManifest.xml`中的theme不能设置为`@style/Theme.AppCompat.Translucent`，应该为如下设置
@@ -128,3 +129,7 @@ Update your project-level build.gradle to have
 
 ## TextView设置滚动
 使用内部自带的`setMovementMethod(ScrollingMovementMethod.getInstance())`方法即可
+
+## 荣耀手机使用Android Studio Profiler时App闪退
+需要删除`data/data/[package_name]/codecache`目录，才能正常使用。
+另一种说法是删除手机上的`/data/local/tmp/perfd`目录，但是dump不了堆存储文件。
