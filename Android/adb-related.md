@@ -8,6 +8,7 @@
   - [清除安装包数据与缓存](#清除安装包数据与缓存)
   - [adb修改sdcard内容后，对应文件管理器没有立刻更新](#adb修改sdcard内容后对应文件管理器没有立刻更新)
   - [读取剪切板内容](#读取剪切板内容)
+  - [adb pull 多个文件](#adb-pull-多个文件)
 
 ## adb获取栈顶信息
 1. 查看当前activity
@@ -97,3 +98,7 @@ else
 fi
 adb shell am force-stop ca.zgrs.clipper
 ```
+
+## adb pull 多个文件
+比如我要获取某天的截图，就可以使用如下命令
+`adb shell 'ls /sdcard/Pictures/Screenshots/Screenshot_20220526_110*.jpg' |tr -d '\r' | sed -e 's/^\///' | xargs -n1 adb pull`
