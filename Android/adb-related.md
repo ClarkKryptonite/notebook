@@ -10,6 +10,7 @@
   - [读取剪切板内容](#读取剪切板内容)
   - [adb pull 多个文件](#adb-pull-多个文件)
   - [adb 无线调试](#adb-无线调试)
+  - [adb 查看设备CPU是32位还是64位](#adb-查看设备cpu是32位还是64位)
 
 ## adb获取栈顶信息
 1. 查看当前activity
@@ -107,3 +108,6 @@ adb shell am force-stop ca.zgrs.clipper
 ## adb 无线调试
 如果直接调用`adb connect [ip]`失败的话。
 需要先用数据线连接手机进入调试模式，再在终端输入`adb tcpip 5555`，再调用`adb connect [ip]`
+
+## adb 查看设备CPU是32位还是64位
+`adb shell getprop ro.product.cpu.abi`
