@@ -7,6 +7,8 @@
   - [字符串截取操作](#字符串截取操作)
   - [判断字符串包含关系](#判断字符串包含关系)
     - [`=~`详解](#详解)
+  - [`test`(`[]`)命令详解](#test命令详解)
+  - [`[[]]`命令详解](#命令详解)
 
 ## 字符串拼接
 关于长字串拼接，需要各行左侧顶边，且在每行的行尾加上`\`。或者用字符串`" \[换行]"`
@@ -97,6 +99,8 @@ fi
 
 ```
 ### `=~`详解
+本解释来自：[https://segmentfault.com/a/1190000022102207](https://segmentfault.com/a/1190000022102207)
+
 在 Linux bash shell 中，可以使用 `[[` 命令来进行判断。
 其中，可以使用 `[[` 命令的 `=～` 操作符来判断某个字符串是否包含特定模式。
 
@@ -122,3 +126,8 @@ Any part of the pattern may be quoted to force the quoted portion to be matched 
 
 **注意：** 只有 `[[ ]]` 命令支持 `=~` 操作符，`test` 命令和 `[ ]` 命令都不支持 `=~` 操作符。
 
+## `test`(`[]`)命令详解
+[http://c.biancheng.net/view/2742.html](http://c.biancheng.net/view/2742.html)
+
+## `[[]]`命令详解
+[http://c.biancheng.net/view/2751.html](http://c.biancheng.net/view/2751.html)
