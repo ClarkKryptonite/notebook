@@ -5,6 +5,7 @@
   - [执行curl传json参数时](#执行curl传json参数时)
   - [大小写转化](#大小写转化)
   - [字符串截取操作](#字符串截取操作)
+  - [判断字符串包含关系](#判断字符串包含关系)
 
 ## 字符串拼接
 关于长字串拼接，需要各行左侧顶边，且在每行的行尾加上`\`。或者用字符串`" \[换行]"`
@@ -58,4 +59,40 @@ echo $apkStartVStr
 # 截取从右往左数，最后一个_前的字串
 apkVersion=${apkStartVStr%%_*}
 echo $apkVersion
+```
+
+## 判断字符串包含关系
+```shell
+# 充分利用了grep 的特性
+strA="long string"
+strB="string"
+result=$(echo $strA | grep "${strB}")
+if [[ "$result" != "" ]]
+then
+    echo "包含"
+else
+    echo "不包含"
+fi
+
+# 利用字符串运算符 =~ 直接判断strA是否包含strB
+strA="helloworld"
+strB="low"
+if [[ $strA =~ $strB ]]
+then
+    echo "包含"
+else
+    echo "不包含"
+fi
+
+# 利用通配符
+A="helloworld"
+B="low"
+if [[ $A == *$B* ]]
+then
+    echo "包含"
+else
+    echo "不包含"
+fi
+
+
 ```
