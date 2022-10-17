@@ -55,3 +55,41 @@ ps: 对于一加5来说，twrp-3.7.0_12-0-cheeseburger_dumpling.img 这个版本
 **刷新后千万不要锁OEM！**  
 **刷新后千万不要锁OEM！**  
 **刷新后千万不要锁OEM！**  
+
+参考链接：  
+> [How to Install Android 13 on OnePlus 5/5T](https://www.droidwin.com/how-to-install-android-13-on-oneplus-5-5t/#STEP_4_Download_OnePlus_55T_Android_13_ROM_GApps)  
+> [How to Download and Install Android 13 GApps](https://www.droidwin.com/how-to-download-and-install-android-13-gapps/#Full_GApps)  
+> [Download and Install AOSP Android 13 on OnePlus 5 and 5T](https://www.getdroidtips.com/android-13-oneplus-5-5t/#Install-TWRP-Recovery)  
+> [[ROM][13.0][OnePlus 5/5T] AOSP for OnePlus 5](https://forum.xda-developers.com/t/rom-13-0-oneplus-5-5t-aosp-for-oneplus-5-4-october-2022.4480549/)  
+> [TWRP for OnePlus 5/5T](https://twrp.me/oneplus/oneplus5-5t.html)  
+
+
+
+# 救砖
+如果锁OEM后导致无法进入主界面，需要人工救砖。同样的每个厂家救砖的方式不一样，这里还是记录一加5救砖。
+
+## 准备工作
+下载9008驱动工具，MSM解砖工具(只有Windows版本), 一加初始版本的镜像。
+
+## 具体操作
+1. 关闭Windows的`turn off Driver Signature Enforcement`, 一般来说按住Shift键重启，在启动设置中关闭即可。
+2. 让手机完全关机
+3. 知道到Windows的设备管理器
+4. 长按'音量+'十秒，连接到电脑, 观察设备管理器是否有设备加入，如果新设备是9008版本则直接进行下一步，否则要装对应的驱动后才能接着往下走。
+5. 右键管理员启动MSM Tool, 如果里面有连接设备直接开始即可，否则要重新检查驱动是否安装完成。开始过程中可能碰到`Sahara Communication Fail`错误，此时直接按`音量+`+`开机键`即可。
+
+## 修复些问题
+按照上诉的操作后，就能进入最初始的一加5系统界面，但是会有两个问题。
+1. 无法刷最新的系统
+2. 无法连接网络
+
+这时候就要去论坛里面找离该版本比较近的新系统下载到本地，在设置里进行手动升级。
+这里用就`Hydrogen_23_OTA_001_all_Oreo.zip`升级就行，`OnePlus5Hydrogen_23_OTA_037_all_1812102153_android8_1.zip`可能也可以具体没试过。
+然后再升官方最新的包。地址是[https://www.oneplus.com/cn/support/softwareupgrade](https://www.oneplus.com/cn/support/softwareupgrade)这样就能愉快玩耍了。
+
+链接：
+> [[GUIDE] Unbrick Tool for OnePlus 5 with OOS 9.0.9 & OOS 9.0.11 (Untouched full stock)](https://forum.xda-developers.com/t/guide-unbrick-tool-for-oneplus-5-with-oos-9-0-9-oos-9-0-11-untouched-full-stock.3761706/)  
+> [UnBrick OnePlus 5 Phone With Official Tool [Download]](https://www.technobuzz.net/unbrick-oneplus-5-phone/)  
+> [一加5bbs](https://www.oneplusbbs.com/forum-117-1-filter-typeid-typeid-130.html)  
+> [[教程] 【推荐】一加手机15种机型线刷救砖资源★附教程](http://www.oneplusbbs.com/thread-4446250-1-1.html)  
+> [一加5刷机资源集合](https://jzsst.github.io/2019/oneplus5-brush-resource-collection/)
