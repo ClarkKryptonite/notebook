@@ -10,21 +10,25 @@
 
 **Enable Advanced Reboot:** On your phone go to Settings > Developer options. Then enable the 'Advanced Reboot' option.
 
+**Remove password** 将一切密码移除
+
 对于一加5:
 1. 执行`adb reboot bootloader` 重启手机进入bootloader
 2. 执行`fastboot devices`确保fastboot驱动已正确安装(执行后会显示对应devices), 如果没有显示一定要修复好才能做下面的步骤。
 3. 执行`fastboot oem unlock`，然后右滑解锁
-4. 上面步骤执行完成后执行`fastboot reboot`就完成了
+4. 上面步骤执行完成后执行`fastboot reboot`, 进入到Android系统界面, 重新设置开发者选项。
 
 ## 2. 安装TWRP
 TWRP的官网在此：[https://twrp.me/Devices/](https://twrp.me/Devices/), 找对应的设备下载即可。
 
 ps: 对于一加5来说，twrp-3.7.0_12-0-cheeseburger_dumpling.img 这个版本是有问题的，要下它前面的一个版本。
 
-1. 将文件名改为twrp.img, 并执行`fastboot flash recovery twrp.img`  
+1. 在android界面执行`adb reboot bootloader`后，执行`fastboot devices` 确保已正常连接。
+
+2. 将文件名改为twrp.img, 并执行`fastboot flash recovery twrp.img`  
 ![rom_twrp_flash_twrp](img/rom_twrp_flash_twrp.png)
 
-2. 上面执行成功后，执行`fastboot boot twrp.img`   
+3. 上面执行成功后，执行`fastboot boot twrp.img`   
 ![rom_twrp_interface](img/rom_twrp_interface.png)
 
 ## 3. 下载对应的ROM
@@ -48,3 +52,6 @@ ps: 对于一加5来说，twrp-3.7.0_12-0-cheeseburger_dumpling.img 这个版本
 5. 以上步骤完成后再执行如下步骤重启就行了  
 ![rom_reboot_after_install](img/rom_reboot_after_install.png)
 
+**刷新后千万不要锁OEM！**  
+**刷新后千万不要锁OEM！**  
+**刷新后千万不要锁OEM！**  
