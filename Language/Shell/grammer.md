@@ -131,3 +131,66 @@ Any part of the pattern may be quoted to force the quoted portion to be matched 
 
 ## `[[]]`命令详解
 [http://c.biancheng.net/view/2751.html](http://c.biancheng.net/view/2751.html)
+
+## echo 如何原声输出带空格字符串而不换行
+假如有一个文本文件`coder.txt`, 内容如下：
+```txt
+Twinkle, twinkle, little star,
+How I wonder what you are.
+```
+
+然后我们使用cat逐行打印这个文件，在终端中执行以下命令:
+`cat coder.txt`
+输出效果如下:
+```shell
+Twinkle, twinkle, little star,
+How I wonder what you are.
+```
+
+现在有这么一个需求，加入需要对每行文本做进一步的处理，在bash中使用for循环逐行处理。我们先这样写：
+``for f in `cat coder.txt`; do echo $f; done``
+输出效果如下：
+```shell
+Twinkle,
+twinkle,
+little
+star,
+How
+I
+wonder
+what
+you
+are.
+```
+
+给echo指令加上一些其他选项，比如：
+``for f in `cat coder.txt`;do echo -ne "$f"; done``
+输出效果如下：
+```shell
+Twinkle,twinkle,littlestar,HowIwonderwhatyouare.%
+```
+
+``for f in `cat coder.txt`;do echo -e "$f"; done``
+输出效果如下：
+```shell
+Twinkle,
+twinkle,
+little
+star,
+How
+I
+wonder
+what
+you
+are.
+```
+
+### 解决方案
+```shell
+IFS=$'\n'
+for i in `cat coder.txt`; do echo "$i"; done
+unset IFS
+```
+
+原理：
+**bash循环默认使用空格作为分隔符**，我们之用手动指定"\n"换行符为分隔语句，就能原样输出
