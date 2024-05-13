@@ -560,3 +560,23 @@ Note right of ZP: <Tunnel>
 Note right of Z: 启动进程
 Z ->> ZP: pid = zygoteInputStream.readInt()
 ```
+
+### Zygote 为什么不采用Binder机制进行IPC通信呢？
+1. **先后时序问题:**
+binder驱动是早于init进程加载的。而init进程是安卓系统启动的第一个进程。
+安卓中一般使用的binder引用，都是保存在ServiceManager进程中的，而如果想从ServiceManager中获取到对应的binder引用，前提是需要注册。虽然Init进程是先创建ServiceManager，后创建Zygote进程的。虽然Zygote更晚创建，但是也不能保证Zygote进程去注册binder的时候，ServiceManager已经初始化好了。注册时间点无法保证，AMS无法获取到Zygote的binder引用，这是原因之一。
+
+2. **多线程问题:**
+Linux中，fork进程是不推荐fork一个多线程的进程的，因为如果存在锁的情况下，会导致锁异常。
+而如果自身作为binder机制的接收者，就会创建一个额外的线程来进行处理（发送者进程是无影响的）。
+所以，如果使用binder机制，就会导致去fork一个多线程的进程，这是原因之二。
+
+3. **效率问题:**
+AMS和Zygote之间使用的LocalSocket，相对于网络Socket，减少了数据验证等环节，所以其实效率相对于正常的网络Socket会大幅的提升。虽然还是要经过两次拷贝，但是由于数据量并不大，所以其实影响并不明显。
+
+4. **安全问题:**
+LocalSocket其实也有权限校验，并不意味着可以被所有进程随意调用，这是原因之四。
+
+5. **Binder拷贝问题:**
+如果使用binder通讯机制的话，从Zygote中fork出子进程会拷贝Zygote中binder对象。所以就凭白多占用了一块无用的内存区域。而Binder对象不能释放。Binder的特殊性在于其是成对存在的，其分为Client端对象和Server端对象。假设我们使用binder，如果要释放掉APP的Server端binder引用对象，就必须释放掉AMS中的Client端binder对象，那这样就会导致AMS失去binder从而无法正常向Zygote发送消息。
+而使用socket通讯机制的话，fork出APP进程之后，APP进程会去主动的关闭掉这个socket，从而释放这块区域。
