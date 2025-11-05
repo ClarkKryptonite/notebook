@@ -87,9 +87,14 @@ ps: 对于一加5来说，twrp-3.7.0_12-0-cheeseburger_dumpling.img 这个版本
 这里用就`Hydrogen_23_OTA_001_all_Oreo.zip`升级就行，`OnePlus5Hydrogen_23_OTA_037_all_1812102153_android8_1.zip`可能也可以具体没试过。
 然后再升官方最新的包。地址是[https://www.oneplus.com/cn/support/softwareupgrade](https://www.oneplus.com/cn/support/softwareupgrade)这样就能愉快玩耍了。
 
+## 修改时间同步服务器
+升级后会发现时间无法同步
+只需要执行`adb shell "settings put global ntp_server ntp.ntsc.ac.cn"`即可
+
 链接：
 > [[GUIDE] Unbrick Tool for OnePlus 5 with OOS 9.0.9 & OOS 9.0.11 (Untouched full stock)](https://forum.xda-developers.com/t/guide-unbrick-tool-for-oneplus-5-with-oos-9-0-9-oos-9-0-11-untouched-full-stock.3761706/)  
 > [UnBrick OnePlus 5 Phone With Official Tool [Download]](https://www.technobuzz.net/unbrick-oneplus-5-phone/)  
 > [一加5bbs](https://www.oneplusbbs.com/forum-117-1-filter-typeid-typeid-130.html)  
 > [[教程] 【推荐】一加手机15种机型线刷救砖资源★附教程](http://www.oneplusbbs.com/thread-4446250-1-1.html)  
 > [一加5刷机资源集合](https://jzsst.github.io/2019/oneplus5-brush-resource-collection/)
+> [Android修改时间同步服务器](https://zhuanlan.zhihu.com/p/32518769)
